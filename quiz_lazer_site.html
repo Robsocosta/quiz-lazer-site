@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>📊 Quanto de lazer você tem?</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      text-align: center;
+      padding: 30px;
+      animation: fadeIn 2s;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    h1 {
+      color: #d84315;
+      font-size: 36px;
+    }
+
+    .pergunta {
+      margin: 20px auto;
+      font-size: 22px;
+      background-color: #fff3e0;
+      padding: 15px;
+      border-radius: 12px;
+      width: 80%;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    }
+
+    button {
+      margin: 8px;
+      padding: 12px 25px;
+      font-size: 18px;
+      background-color: #ff7043;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #e64a19;
+    }
+
+    #resultado {
+      margin-top: 40px;
+      font-size: 26px;
+      font-weight: bold;
+      color: #4e342e;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 Descubra seu % de lazer!</h1>
+
+  <div class="pergunta">1. Você tem tempo livre durante a semana?<br>
+    <button onclick="responder(25)">Sim, bastante</button>
+    <button onclick="responder(10)">Um pouco</button>
+    <button onclick="responder(0)">Quase nada</button>
+  </div>
+
+  <div class="pergunta">2. Sai com amigos com frequência?<br>
+    <button onclick="responder(20)">Sim, toda semana</button>
+    <button onclick="responder(10)">De vez em quando</button>
+    <button onclick="responder(0)">Muito raramente</button>
+  </div>
+
+  <div class="pergunta">3. Curte um hobby ou lazer (jogos, arte, leitura)?<br>
+    <button onclick="responder(25)">Sim! Amo esse tempo</button>
+    <button onclick="responder(10)">Às vezes</button>
+    <button onclick="responder(0)">Nunca tenho tempo</button>
+  </div>
+
+  <div class="pergunta">4. Final de semana é mais...<br>
+    <button onclick="responder(20)">Lazer e descanso total</button>
+    <button onclick="responder(10)">Metade lazer, metade tarefas</button>
+    <button onclick="responder(0)">Só correria</button>
+  </div>
+
+  <div class="pergunta">5. Você consegue dizer “não” para coisas que tiram seu tempo?<br>
+    <button onclick="responder(10)">Sim, sei me organizar</button>
+    <button onclick="responder(5)">Às vezes</button>
+    <button onclick="responder(0)">Nunca consigo</button>
+  </div>
+
+  <div id="resultado"></div>
+
+  <script>
+    let pontuacao = 0;
+    let perguntasRespondidas = 0;
+
+    function responder(valor) {
+      pontuacao += valor;
+      perguntasRespondidas++;
+
+      if (perguntasRespondidas === 5) {
+        let resultado = '';
+        if (pontuacao >= 80) {
+          resultado = "😎 Você tem 90% de lazer! Continua assim, campeão do descanso!";
+        } else if (pontuacao >= 50) {
+          resultado = "🙂 Você tem 50% de lazer. Um equilíbrio bom, mas sempre cabe mais diversão!";
+        } else {
+          resultado = "😫 Você está com pouco lazer! Tente tirar mais tempo pra você.";
+        }
+
+        document.body.innerHTML = `<h1>Resultado Final 🎯</h1><div id="resultado">${resultado}</div>`;
+      }
+    }
+  </script>
+
+</body>
+</html>
